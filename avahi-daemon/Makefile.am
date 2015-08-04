@@ -155,7 +155,7 @@ endif
 Android.mk: Makefile.am
 	androgenizer -:PROJECT avahi -:SHARED avahi-daemon -:TAGS eng debug \
 	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
-	 -:SOURCES $(avahi_daemon_SOURCES) glob.c \
+	 -:SOURCES $(avahi_daemon_SOURCES) \
 	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	  $(AM_CFLAGS) $(avahi_daemon_CFLAGS) -DBUILD_AS_ANDROID_SERVICE \
 	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS) $(avahi_daemon_CPPFLAGS) \

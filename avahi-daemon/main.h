@@ -28,4 +28,8 @@ extern AvahiSimplePoll *simple_poll_api;
 
 extern int nss_support;
 
+#ifdef BUILD_AS_ANDROID_SERVICE
+int avahi_main(int argc, char *argv[]);
+#endif
+
 #endif

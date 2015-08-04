@@ -129,7 +129,7 @@ noinst_HEADERS = \
 endif
 
 Android.mk: Makefile.am
-	androgenizer -:PROJECT avahi -:SHARED avahi-common -:TAGS eng debug \
+	androgenizer -:PROJECT avahi -:STATIC avahi-common -:TAGS eng debug \
 	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
 	 -:SOURCES $(libavahi_common_la_SOURCES) \
 	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
