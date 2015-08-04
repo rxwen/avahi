@@ -32,6 +32,12 @@ void avahi_set_log_function(AvahiLogFunction function) {
     log_function = function;
 }
 
+#ifdef __BIONIC__
+#include <android/log.h>
+#define LOG_TAG "avahi"
+#define  LOGW(...)  __android_log_print(ANDROID_LOG_WARN,LOG_TAG,__VA_ARGS__)
+#endif
+
 void avahi_log_ap(AvahiLogLevel level, const char*format, va_list ap) {
     char txt[256];
 
@@ -40,7 +46,11 @@ void avahi_log_ap(AvahiLogLevel level, const char*format, va_list ap) {
     if (log_function)
         log_function(level, txt);
     else
+#ifdef __BIONIC__
+        LOGW("%s", txt);
+#else
         fprintf(stderr, "%s\n", txt);
+#endif
 }
 
 void avahi_log(AvahiLogLevel level, const char*format, ...) {

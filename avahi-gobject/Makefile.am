@@ -140,3 +140,13 @@ endif
 
 indent:
 	indent -brf -nbbo -nbc -ip0 -cs -nbfde -npsl -br -brs -bap -i4 -bs -cdw -ce -npcs -hnl -cli4 -nut -ci8 ga-*.[ch]
+
+Android.mk: Makefile.am $(BUILT_SOURCES)
+	androgenizer -:PROJECT avahi -:SHARED avahi-gobject -:TAGS eng debug \
+	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
+	 -:SOURCES $(libavahi_gobject_la_SOURCES) \
+	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	  $(libavahi_gobject_la_CFLAGS) \
+	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS)\
+	 -:LDFLAGS $(libavahi_gobject_la_LIBADD) $(libavahi_gobject_la_LDFLAGS) \
+	> $@

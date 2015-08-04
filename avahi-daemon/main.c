@@ -1395,6 +1395,7 @@ static int make_runtime_dir(void) {
     struct group * gr;
     struct stat st;
 
+#ifndef __BIONIC__
     if (!(pw = getpwnam(AVAHI_USER))) {
         avahi_log_error( "Failed to find user '"AVAHI_USER"'.");
         goto fail;
@@ -1404,6 +1405,7 @@ static int make_runtime_dir(void) {
         avahi_log_error( "Failed to find group '"AVAHI_GROUP"'.");
         goto fail;
     }
+#endif
 
     u = umask(0000);
     reset_umask = 1;
@@ -1412,7 +1414,7 @@ static int make_runtime_dir(void) {
         avahi_log_error("mkdir(\""AVAHI_DAEMON_RUNTIME_DIR"\"): %s", strerror(errno));
         goto fail;
     }
-
+#ifndef __BIONIC__
     chown(AVAHI_DAEMON_RUNTIME_DIR, pw->pw_uid, gr->gr_gid);
 
     if (stat(AVAHI_DAEMON_RUNTIME_DIR, &st) < 0) {
@@ -1424,7 +1426,7 @@ static int make_runtime_dir(void) {
         avahi_log_error("Failed to create runtime directory "AVAHI_DAEMON_RUNTIME_DIR".");
         goto fail;
     }
-
+#endif
     r = 0;
 
 fail:
@@ -1488,7 +1490,11 @@ static void init_rand_seed(void) {
     srand(seed);
 }
 
+#ifdef BUILD_AS_ANDROID_SERVICE
+int avahi_main(int argc, char *argv[]) {
+#else
 int main(int argc, char *argv[]) {
+#endif
     int r = 255;
     int wrote_pid_file = 0;
 
@@ -1613,12 +1619,14 @@ int main(int argc, char *argv[]) {
         if (config.use_syslog || config.daemonize)
             daemon_log_use = DAEMON_LOG_SYSLOG;
 
+#ifndef BUILD_AS_ANDROID_SERVICE
         if (sd_listen_fds(0) <= 0)
             if (daemon_close_all(-1) < 0)
                 avahi_log_warn("Failed to close all remaining file descriptors: %s", strerror(errno));
 
         daemon_reset_sigs(-1);
         daemon_unblock_sigs(-1);
+#endif
 
         if (make_runtime_dir() < 0)
             goto finish;

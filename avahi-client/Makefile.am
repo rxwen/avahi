@@ -80,4 +80,13 @@ check_nss_test_LDADD += -ldl
 libavahi_client_la_LIBADD += -ldl
 endif
 
+Android.mk: Makefile.am
+	androgenizer -:PROJECT avahi -:SHARED avahi-client -:TAGS eng debug \
+	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
+	 -:SOURCES $(libavahi_client_la_SOURCES) \
+	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	  $(AM_CFLAGS) $(libavahi_client_la_CFLAGS) \
+	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS) \
+	 -:LDFLAGS $(libavahi_client_la_LIBADD) $(libavahi_client_la_LDADD) \
+	> $@
 endif

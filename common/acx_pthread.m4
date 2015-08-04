@@ -234,7 +234,7 @@ if test "x$acx_pthread_ok" = xyes; then
    AC_MSG_CHECKING([whether to check for GCC pthread/shared inconsistencies])
    check_inconsistencies=yes
    case "${host_cpu}-${host_os}" in
-     *-darwin*) check_inconsistencies=no ;;
+     *-darwin* | *-androideabi ) check_inconsistencies=no ;;
    esac
    if test x"$GCC" != xyes -o "x$check_inconsistencies" != xyes ; then
       AC_MSG_RESULT([no])
