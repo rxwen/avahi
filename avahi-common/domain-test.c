@@ -26,7 +26,7 @@
 #include <assert.h>
 
 #include "domain.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 
 int main(AVAHI_GCC_UNUSED int argc, AVAHI_GCC_UNUSED char *argv[]) {
     char *s;

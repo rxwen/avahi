@@ -32,7 +32,7 @@
 
 #include <avahi-client/client.h>
 #include <avahi-common/strlst.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/domain.h>
 #include <avahi-common/i18n.h>
 

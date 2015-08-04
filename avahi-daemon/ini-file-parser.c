@@ -26,7 +26,7 @@
 #include <errno.h>
 #include <ctype.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-core/log.h>
 
 #include "ini-file-parser.h"

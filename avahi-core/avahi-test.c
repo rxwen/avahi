@@ -30,7 +30,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/simple-watch.h>
 #include <avahi-common/alternative.h>
 #include <avahi-common/timeval.h>

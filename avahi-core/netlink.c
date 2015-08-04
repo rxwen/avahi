@@ -27,7 +27,7 @@
 #include <sys/ioctl.h>
 #include <assert.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include "netlink.h"
 #include "log.h"
 

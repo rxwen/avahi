@@ -26,7 +26,7 @@
 #include <errno.h>
 #include <string.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include "log.h"
 #include "iface.h"

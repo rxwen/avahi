@@ -25,7 +25,7 @@
 #include <glib.h>
 
 #include <avahi-common/cdecl.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 AVAHI_C_DECL_BEGIN
 

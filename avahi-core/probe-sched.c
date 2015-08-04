@@ -25,7 +25,7 @@
 
 #include <avahi-common/domain.h>
 #include <avahi-common/timeval.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include "probe-sched.h"
 #include "log.h"

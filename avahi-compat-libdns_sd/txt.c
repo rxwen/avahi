@@ -26,7 +26,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include "dns_sd.h"
 #include "warn.h"

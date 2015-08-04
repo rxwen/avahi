@@ -24,7 +24,7 @@
 #include <assert.h>
 #include <stdio.h>
 
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "timeval.h"
 #include "dbus-watch-glue.h"
 

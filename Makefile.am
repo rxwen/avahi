@@ -80,7 +80,7 @@ SUBDIRS = \
 
 DX_INPUT = \
 	$(srcdir)/avahi-common/address.h \
-	$(srcdir)/avahi-common/malloc.h \
+	$(srcdir)/avahi-common/avahi-malloc.h \
 	$(srcdir)/avahi-common/strlst.h \
 	$(srcdir)/avahi-common/alternative.h \
 	$(srcdir)/avahi-common/defs.h \

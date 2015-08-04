@@ -25,7 +25,7 @@
 #include <assert.h>
 
 #include <avahi-common/llist.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include "rrlist.h"
 #include "log.h"

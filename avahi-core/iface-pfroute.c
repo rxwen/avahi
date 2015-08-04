@@ -21,7 +21,7 @@
 #include <config.h>
 #endif
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include <string.h>
 #include <unistd.h>

@@ -26,7 +26,7 @@
 #include <stdio.h>
 
 #include <avahi-common/llist.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/error.h>
 #include <avahi-core/log.h>
 #include <avahi-core/publish.h>

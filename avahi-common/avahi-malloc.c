@@ -27,7 +27,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "malloc.h"
+#include "avahi-malloc.h"
 
 #ifndef va_copy
 #ifdef __va_copy
