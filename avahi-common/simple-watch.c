@@ -30,7 +30,7 @@
 #include <stdio.h>
 
 #include "llist.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "timeval.h"
 #include "simple-watch.h"
 

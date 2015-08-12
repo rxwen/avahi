@@ -27,7 +27,7 @@
 #include <stdlib.h>
 #include <netinet/in.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/error.h>
 #include <avahi-common/timeval.h>
 

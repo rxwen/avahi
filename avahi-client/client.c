@@ -31,7 +31,7 @@
 #include <avahi-common/llist.h>
 #include <avahi-common/error.h>
 #include <avahi-common/dbus.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/dbus-watch-glue.h>
 #include <avahi-common/i18n.h>
 

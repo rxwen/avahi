@@ -22,7 +22,7 @@
 #endif
 
 #include <avahi-common/llist.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/timeval.h>
 
 #include "glib-watch.h"

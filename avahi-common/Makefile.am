@@ -29,7 +29,7 @@ avahi_commoninclude_HEADERS = \
 	domain.h \
 	cdecl.h \
 	defs.h \
-	malloc.h \
+	avahi-malloc.h \
 	watch.h \
 	timeval.h \
 	simple-watch.h \
@@ -54,7 +54,7 @@ lib_LTLIBRARIES = \
 	libavahi-common.la
 
 libavahi_common_la_SOURCES = \
-	malloc.c malloc.h \
+	avahi-malloc.c avahi-malloc.h \
 	address.c address.h \
 	alternative.c alternative.h \
 	error.c error.h \
@@ -74,13 +74,13 @@ libavahi_common_la_LDFLAGS = $(AM_LDFLAGS)  -version-info $(LIBAVAHI_COMMON_VERS
 
 strlst_test_SOURCES = \
 	strlst.c strlst.h \
-	malloc.c malloc.h \
+	avahi-malloc.c avahi-malloc.h \
 	strlst-test.c
 strlst_test_CFLAGS = $(AM_CFLAGS)
 
 alternative_test_SOURCES = \
 	alternative.c alternative.h \
-	malloc.c malloc.h \
+	avahi-malloc.c avahi-malloc.h \
 	domain.c domain.h \
 	address.c address.h \
 	alternative-test.c \
@@ -89,7 +89,7 @@ alternative_test_CFLAGS = $(AM_CFLAGS)
 
 domain_test_SOURCES = \
 	domain.c domain.h \
-	malloc.c malloc.h \
+	avahi-malloc.c avahi-malloc.h \
 	address.c address.h \
 	domain-test.c \
 	utf8.c utf8.h
@@ -99,7 +99,7 @@ watch_test_SOURCES = \
 	timeval.c timeval.h \
 	simple-watch.c simple-watch.h \
 	watch.h \
-	malloc.c malloc.h \
+	avahi-malloc.c avahi-malloc.h \
 	watch-test.c
 watch_test_CFLAGS = $(AM_CFLAGS) $(PTHREAD_CFLAGS)
 watch_test_LDADD = $(AM_LDADD) $(PTHREAD_LIBS) $(PTHREAD_CFLAGS)

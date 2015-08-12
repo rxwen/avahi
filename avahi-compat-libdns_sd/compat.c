@@ -35,7 +35,7 @@
 #include <sys/socket.h>
 
 #include <avahi-common/simple-watch.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/error.h>
 #include <avahi-common/domain.h>
 #include <avahi-common/alternative.h>

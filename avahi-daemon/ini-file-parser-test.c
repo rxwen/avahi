@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 #include "ini-file-parser.h"
 

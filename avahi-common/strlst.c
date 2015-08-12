@@ -28,7 +28,7 @@
 #include <stdlib.h>
 
 #include "strlst.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "defs.h"
 
 AvahiStringList*avahi_string_list_add_anonymous(AvahiStringList *l, size_t size) {

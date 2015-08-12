@@ -24,7 +24,7 @@
 #include <stdlib.h>
 
 #include "rlist.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 
 AvahiRList* avahi_rlist_prepend(AvahiRList *r, void *data) {
     AvahiRList *n;

@@ -27,7 +27,7 @@
 #include <assert.h>
 
 #include "alternative.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "domain.h"
 #include "utf8.h"
 

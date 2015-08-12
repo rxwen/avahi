@@ -24,7 +24,7 @@
 #include <stdio.h>
 
 #include "alternative.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "domain.h"
 
 int main(AVAHI_GCC_UNUSED int argc, AVAHI_GCC_UNUSED char *argv[]) {

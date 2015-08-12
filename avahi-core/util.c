@@ -27,7 +27,7 @@
 #include <assert.h>
 #include <ctype.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include "util.h"
 
 void avahi_hexdump(const void* p, size_t size) {

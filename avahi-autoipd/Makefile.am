@@ -35,7 +35,7 @@ avahi_autoipd_SOURCES = \
 	main.c main.h \
 	 ../avahi-daemon/setproctitle.c  ../avahi-daemon/setproctitle.h \
 	iface.h	\
-	../avahi-common/malloc.h ../avahi-common/malloc.c \
+	../avahi-common/avahi-malloc.h ../avahi-common/avahi-malloc.c \
 	../avahi-common/timeval.h ../avahi-common/timeval.c
 
 avahi_autoipd_CFLAGS = $(AM_CFLAGS) $(LIBDAEMON_CFLAGS)

@@ -32,7 +32,7 @@
 #include <assert.h>
 
 #include "domain.h"
-#include "malloc.h"
+#include "avahi-malloc.h"
 #include "error.h"
 #include "address.h"
 #include "utf8.h"

@@ -28,7 +28,7 @@
 #include <avahi-client/lookup.h>
 #include <avahi-common/error.h>
 #include <avahi-common/simple-watch.h>
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 
 static void hexdump(const void* p, size_t size) {
     const uint8_t *c = p;

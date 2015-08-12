@@ -23,7 +23,7 @@
 
 #include <string.h>
 
-#include <avahi-common/malloc.h>
+#include "avahi-common/avahi-malloc.h"
 #include <avahi-common/dbus.h>
 #include <avahi-common/error.h>
 #include <avahi-core/log.h>
