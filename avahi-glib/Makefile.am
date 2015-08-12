@@ -50,4 +50,14 @@ glib_watch_test_SOURCES = \
 glib_watch_test_CFLAGS = $(AM_CFLAGS) $(GLIB20_CFLAGS)
 glib_watch_test_LDADD = $(AM_LDADD) ../avahi-common/libavahi-common.la $(GLIB20_LIBS)
 
+Android.mk: Makefile.am
+	androgenizer -:PROJECT avahi -:SHARED avahi-glib -:TAGS eng debug \
+	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
+	 -:SOURCES $(libavahi_glib_la_SOURCES) \
+	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	  $(libavahi_glib_la_CFLAGS) \
+	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS) \
+	 -:LDFLAGS $(libavahi_glib_la_LDFLAGS) $(libavahi_glib_la_LIBADD) \
+	> $@
+
 endif

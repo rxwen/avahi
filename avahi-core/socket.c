@@ -64,6 +64,13 @@
 #endif
 #endif
 
+#ifdef __BIONIC__
+struct in6_pktinfo {
+	struct in6_addr ipi6_addr;
+	int ipi6_ifindex;
+};
+#endif
+
 static void mdns_mcast_group_ipv4(struct sockaddr_in *ret_sa) {
     assert(ret_sa);
 

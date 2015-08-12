@@ -171,3 +171,13 @@ valgrind: avahi-test
 
 gdb: avahi-test
 	libtool --mode=execute gdb ./avahi-test
+
+Android.mk: Makefile.am
+	androgenizer -:PROJECT avahi -:SHARED avahi-core -:TAGS eng debug \
+	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
+	 -:SOURCES $(libavahi_core_la_SOURCES) \
+	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	  $(libavahi_core_la_CFLAGS) \
+	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS) \
+	 -:LDFLAGS $(libavahi_core_la_LIBADD) $(libavahi_core_la_LDFLAGS) -llog \
+	> $@

@@ -64,3 +64,13 @@ install-exec-local:
 		$(LN_S) avahi-publish avahi-publish-service
 
 endif
+
+Android.mk: Makefile.am
+	androgenizer -:PROJECT avahi -:EXECUTABLE avahi-browse -:TAGS eng debug \
+	 -:REL_TOP $(top_srcdir) -:ABS_TOP $(abs_top_srcdir) \
+	 -:SOURCES $(avahi_browse_SOURCES) \
+	 -:CFLAGS $(DEFS) $(CFLAGS) $(DEFAULT_INCLUDES) $(INCLUDES) \
+	  $(avahi_browse_CFLAGS) \
+	 -:CPPFLAGS $(CPPFLAGS) $(AM_CPPFLAGS) \
+	 -:LDFLAGS $(avahi_browse_LDADD) -ldbus-1 \
+	> $@
