@@ -1,7 +1,12 @@
 LOCAL_PATH:=$(call my-dir)
+
+LOCAL_INIT_SERVICE := avahi-daemon
+
 include $(CLEAR_VARS)
 
-LOCAL_MODULE:=avahi-daemon
+LOCAL_MODULE := $(LOCAL_INIT_SERVICE)
+
+LOCAL_REQUIRED_MODULES := init.$(LOCAL_INIT_SERVICE).rc
 
 LOCAL_SRC_FILES := \
         main.c \
@@ -87,3 +92,15 @@ LOCAL_C_INCLUDES := \
         external/avahi
 
 include $(BUILD_EXECUTABLE)
+
+ifdef INITRC_TEMPLATE
+include $(CLEAR_VARS)
+LOCAL_MODULE := init.$(LOCAL_INIT_SERVICE).rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_INITRCD)
+
+include $(BUILD_SYSTEM)/base_rules.mk
+
+$(LOCAL_BUILT_MODULE): $(INITRC_TEMPLATE)
+	$(call generate-initrc-file,$(LOCAL_INIT_SERVICE))
+endif
