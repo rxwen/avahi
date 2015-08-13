@@ -54,4 +54,4 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     external/avahi
 
-include $(BUILD_STATIC_LIBRARY)
+include $(BUILD_SHARED_LIBRARY)

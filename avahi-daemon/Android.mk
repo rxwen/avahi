@@ -3,8 +3,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE:=avahi-daemon
 
-LOCAL_MODULE_TAGS:=eng debug
-
 LOCAL_SRC_FILES := \
         main.c \
         simple-protocol.c \

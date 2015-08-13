@@ -3,8 +3,6 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE:=libavahi-client
 
-LOCAL_MODULE_TAGS:=eng debug
-
 LOCAL_SRC_FILES := \
     client.c \
     entrygroup.c \
