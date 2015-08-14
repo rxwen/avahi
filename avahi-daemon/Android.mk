@@ -1,12 +1,16 @@
 LOCAL_PATH:=$(call my-dir)
 
+# Build avahi-daemon, install the conf file, and generate the init rc file.
+
 LOCAL_INIT_SERVICE := avahi-daemon
 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := $(LOCAL_INIT_SERVICE)
 
-LOCAL_REQUIRED_MODULES := init.$(LOCAL_INIT_SERVICE).rc
+LOCAL_REQUIRED_MODULES := \
+        $(LOCAL_INIT_SERVICE).conf \
+        init.$(LOCAL_INIT_SERVICE).rc \
 
 LOCAL_SRC_FILES := \
         main.c \
@@ -88,6 +92,15 @@ LOCAL_C_INCLUDES := \
 
 include $(BUILD_EXECUTABLE)
 
+# /system/etc/avahi-daemon.conf
+include $(CLEAR_VARS)
+LOCAL_MODULE := $(LOCAL_INIT_SERVICE).conf
+LOCAL_SRC_FILES := $(LOCAL_INIT_SERVICE).conf
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_TARGET := $(TARGET_OUT_ETC)
+include $(BUILD_PREBUILT)
+
+# init.avahi-daemon.rc generation
 ifdef INITRC_TEMPLATE
 include $(CLEAR_VARS)
 LOCAL_MODULE := init.$(LOCAL_INIT_SERVICE).rc
