@@ -81,8 +81,9 @@ static const char* const get_file_name_table[AVAHI_CHROOT_MAX] = {
 static const char *const unlink_file_name_table[AVAHI_CHROOT_MAX] = {
     NULL,
     NULL,
-    NULL,
+    NULL
 #ifdef HAVE_DBUS
+    ,
     NULL,
     NULL,
     NULL,
@@ -91,10 +92,16 @@ static const char *const unlink_file_name_table[AVAHI_CHROOT_MAX] = {
     NULL,
     NULL,
     NULL,
-    NULL,
+    NULL
 #endif
-    AVAHI_DAEMON_RUNTIME_DIR"/pid",
+#ifdef AVAHI_DAEMON_RUNTIME_DIR
+    ,
+    AVAHI_DAEMON_RUNTIME_DIR"/pid"
+#endif
+#ifdef AVAHI_SOCKET
+    ,
     AVAHI_SOCKET
+#endif
 };
 
 static int helper_fd = -1;

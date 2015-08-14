@@ -74,11 +74,14 @@
 
 #include "setproctitle.h"
 #include "main.h"
-#include "simple-protocol.h"
 #include "static-services.h"
 #include "static-hosts.h"
 #include "ini-file-parser.h"
 #include "sd-daemon.h"
+
+#ifdef AVAHI_SOCKET
+#include "simple-protocol.h"
+#endif
 
 #ifdef HAVE_DBUS
 #include "dbus-protocol.h"
@@ -369,7 +372,9 @@ static void server_callback(AvahiServer *s, AvahiServerState state, void *userda
             if (c->publish_dns_servers && c->publish_dns_servers[0])
                 dns_servers_entry_group = add_dns_servers(s, dns_servers_entry_group, c->publish_dns_servers);
 
+#ifdef AVAHI_SOCKET
             simple_protocol_restart_queries();
+#endif
             break;
 
         case AVAHI_SERVER_COLLISION: {
@@ -921,11 +926,15 @@ static void add_inotify_watches(void) {
                       |IN_ONLYDIR
 #endif
     );
+
+#ifdef AVAHI_CONFIG_DIR
     inotify_add_watch(inotify_fd, c ? "/" : AVAHI_CONFIG_DIR, IN_CLOSE_WRITE|IN_DELETE|IN_DELETE_SELF|IN_MOVED_FROM|IN_MOVED_TO|IN_MOVE_SELF
 #ifdef IN_ONLYDIR
                       |IN_ONLYDIR
 #endif
     );
+#endif
+
 }
 
 #endif
@@ -947,7 +956,10 @@ static void add_kqueue_watches(void) {
     c = config.use_chroot;
 #endif
 
+#ifdef AVAHI_CONFIG_DIR
     add_kqueue_watch(c ? "/" : AVAHI_CONFIG_DIR);
+#endif
+
     add_kqueue_watch(c ? "/services" : AVAHI_SERVICE_DIR);
 }
 
@@ -1154,8 +1166,10 @@ static int run_server(DaemonConfig *c) {
         goto finish;
     }
 
+#ifdef AVAHI_SOCKET
     if (simple_protocol_setup(poll_api) < 0)
         goto finish;
+#endif
 
 #ifdef HAVE_DBUS
     if (c->enable_dbus) {
@@ -1272,7 +1286,9 @@ finish:
 
     remove_dns_server_entry_groups();
 
+#ifdef AVAHI_SOCKET
     simple_protocol_shutdown();
+#endif
 
 #ifdef HAVE_DBUS
     if (c->enable_dbus)
@@ -1384,9 +1400,14 @@ static int drop_root(void) {
 }
 
 static const char* pid_file_proc(void) {
+#ifdef AVAHI_DAEMON_RUNTIME_DIR
     return AVAHI_DAEMON_RUNTIME_DIR"/pid";
+#else
+    return NULL;
+#endif
 }
 
+#ifdef AVAHI_DAEMON_RUNTIME_DIR
 static int make_runtime_dir(void) {
     int r = -1;
     mode_t u;
@@ -1434,6 +1455,7 @@ fail:
         umask(u);
     return r;
 }
+#endif
 
 static void set_one_rlimit(int resource, rlim_t limit, const char *name) {
     struct rlimit rl;
@@ -1628,8 +1650,10 @@ int main(int argc, char *argv[]) {
         daemon_unblock_sigs(-1);
 #endif
 
+#ifdef AVAHI_DAEMON_RUNTIME_DIR
         if (make_runtime_dir() < 0)
             goto finish;
+#endif
 
         if (config.drop_root) {
 #ifdef ENABLE_CHROOT
@@ -1649,11 +1673,14 @@ int main(int argc, char *argv[]) {
         }
 
         if (daemon_pid_file_create() < 0) {
-            avahi_log_error("Failed to create PID file: %s", strerror(errno));
-
             if (config.daemonize)
                 daemon_retval_send(1);
-            goto finish;
+
+            if (pid_file_proc() != NULL) {
+                avahi_log_error("Failed to create PID file: %s",
+                                strerror(errno));
+                goto finish;
+            }
         } else
             wrote_pid_file = 1;
 

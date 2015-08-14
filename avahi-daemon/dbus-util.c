@@ -258,6 +258,7 @@ fail:
 }
 
 DBusHandlerResult avahi_dbus_handle_introspect(DBusConnection *c, DBusMessage *m, const char *fname) {
+#ifdef AVAHI_DBUS_INTROSPECTION_DIR
     char *contents, *path;
     DBusError error;
 
@@ -289,6 +290,7 @@ DBusHandlerResult avahi_dbus_handle_introspect(DBusConnection *c, DBusMessage *m
 fail:
     if (dbus_error_is_set(&error))
         dbus_error_free(&error);
+#endif
 
     return DBUS_HANDLER_RESULT_NOT_YET_HANDLED;
 

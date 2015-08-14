@@ -10,7 +10,6 @@ LOCAL_REQUIRED_MODULES := init.$(LOCAL_INIT_SERVICE).rc
 
 LOCAL_SRC_FILES := \
         main.c \
-        simple-protocol.c \
         static-services.c \
         static-hosts.c \
         ini-file-parser.c \
@@ -73,13 +72,9 @@ LOCAL_CFLAGS := \
         -Wno-cast-qual \
         -fno-strict-aliasing \
         -DDEBUG_TRAP=__asm__\(\"int\ $3\"\) \
-        -DAVAHI_DAEMON_RUNTIME_DIR=\"/data/misc/avahi/daemon/\" \
-        -DAVAHI_SOCKET=\"/dev/socket/avahi\" \
-        -DAVAHI_SERVICE_DIR=\"/data/misc/avahi/services\" \
-        -DAVAHI_CONFIG_FILE=\"/system/etc/avahi/avahi-daemon.conf\" \
-        -DAVAHI_HOSTS_FILE=\"/system/etc/avahi/avahi-hosts\" \
-        -DAVAHI_DBUS_INTROSPECTION_DIR=\"/usr/local/share/dbus/interfaces\" \
-        -DAVAHI_CONFIG_DIR=\"/system/etc/avahi\" \
+        -DAVAHI_CONFIG_FILE=\"/system/etc/avahi-daemon.conf\" \
+        -DAVAHI_HOSTS_FILE=\"/data/misc/avahi/hosts\" \
+        -DAVAHI_SERVICE_DIR=\"/data/misc/avahi/services/\" \
         -DUSE_EXPAT_H \
         -DDBUS_VERSION_MAJOR=1 \
         -DDBUS_VERSION_MINOR=6 \

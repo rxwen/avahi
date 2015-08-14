@@ -171,7 +171,7 @@ void static_hosts_load(int in_chroot) {
     FILE *f;
     unsigned int line = 0;
     StaticHost *h, *next;
-    const char *filename = in_chroot ? "/hosts" : AVAHI_CONFIG_DIR "/hosts";
+    const char *filename = AVAHI_HOSTS_FILE;
 
     if (!(f = fopen(filename, "r"))) {
         if (errno != ENOENT)
