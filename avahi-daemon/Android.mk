@@ -109,6 +109,8 @@ LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_INITRCD)
 
 include $(BUILD_SYSTEM)/base_rules.mk
 
+.PHONY: $(LOCAL_BUILT_MODULE)
 $(LOCAL_BUILT_MODULE): $(INITRC_TEMPLATE)
-	$(call generate-initrc-file,$(LOCAL_INIT_SERVICE))
+	$(call generate-initrc-file,$(LOCAL_INIT_SERVICE),\
+          --syslog --no-drop-root,inet)
 endif
