@@ -2,15 +2,13 @@ LOCAL_PATH:=$(call my-dir)
 
 # Build avahi-daemon, install the conf file, and generate the init rc file.
 
-LOCAL_INIT_SERVICE := avahi-daemon
-
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := $(LOCAL_INIT_SERVICE)
+LOCAL_MODULE := avahi-deamon
 
 LOCAL_REQUIRED_MODULES := \
-        $(LOCAL_INIT_SERVICE).conf \
-        init.$(LOCAL_INIT_SERVICE).rc \
+        avahi-daemon.conf \
+        init.avahi-daemon.rc \
 
 LOCAL_SRC_FILES := \
         main.c \
@@ -94,8 +92,8 @@ include $(BUILD_EXECUTABLE)
 
 # /system/etc/avahi-daemon.conf
 include $(CLEAR_VARS)
-LOCAL_MODULE := $(LOCAL_INIT_SERVICE).conf
-LOCAL_SRC_FILES := $(LOCAL_INIT_SERVICE).conf
+LOCAL_MODULE := avahi-daemon.conf
+LOCAL_SRC_FILES := avahi-daemon.conf
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TARGET := $(TARGET_OUT_ETC)
 include $(BUILD_PREBUILT)
@@ -103,7 +101,7 @@ include $(BUILD_PREBUILT)
 # init.avahi-daemon.rc generation
 ifdef INITRC_TEMPLATE
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.$(LOCAL_INIT_SERVICE).rc
+LOCAL_MODULE := init.avahi-daemon.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_INITRCD)
 
@@ -111,6 +109,6 @@ include $(BUILD_SYSTEM)/base_rules.mk
 
 .PHONY: $(LOCAL_BUILT_MODULE)
 $(LOCAL_BUILT_MODULE): $(INITRC_TEMPLATE)
-	$(call generate-initrc-file,$(LOCAL_INIT_SERVICE),\
+	$(call generate-initrc-file,avahi-daemon,\
           --syslog --no-drop-root,inet)
 endif
