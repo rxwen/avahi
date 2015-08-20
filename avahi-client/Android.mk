@@ -59,4 +59,6 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     external/avahi
 
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/..
+
 include $(BUILD_SHARED_LIBRARY)
