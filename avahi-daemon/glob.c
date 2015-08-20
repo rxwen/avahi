@@ -396,6 +396,7 @@ globtilde(const Char *pattern, Char *patbuf, size_t patbuf_len, glob_t *pglob)
 		 * we're not running setuid or setgid) and then trying
 		 * the password file
 		 */
+#ifndef __BIONIC__
 		if (issetugid() != 0 ||
 		    (h = getenv("HOME")) == NULL) {
 			if (((h = getlogin()) != NULL &&
@@ -405,6 +406,7 @@ globtilde(const Char *pattern, Char *patbuf, size_t patbuf_len, glob_t *pglob)
 			else
 				return pattern;
 		}
+#endif
 	}
 	else {
 		/*
