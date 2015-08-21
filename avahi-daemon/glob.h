@@ -47,9 +47,11 @@
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
+#ifndef __BIONIC__
 #ifndef	_SIZE_T_DECLARED
 typedef	__size_t	size_t;
 #define	_SIZE_T_DECLARED
+#endif
 #endif
 
 struct stat;
