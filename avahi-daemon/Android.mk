@@ -4,7 +4,7 @@ LOCAL_PATH:=$(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := avahi-deamon
+LOCAL_MODULE := avahi-daemon
 
 LOCAL_REQUIRED_MODULES := \
         avahi-daemon.conf \
