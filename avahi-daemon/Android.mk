@@ -8,7 +8,7 @@ LOCAL_MODULE := avahi-daemon
 
 LOCAL_REQUIRED_MODULES := \
         avahi-daemon.conf \
-        init.avahi-daemon.rc \
+        avahi-daemon.rc \
 
 LOCAL_SRC_FILES := \
         main.c \
@@ -98,10 +98,10 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TARGET := $(TARGET_OUT_ETC)
 include $(BUILD_PREBUILT)
 
-# init.avahi-daemon.rc generation
+# avahi-daemon.rc generation
 ifdef INITRC_TEMPLATE
 include $(CLEAR_VARS)
-LOCAL_MODULE := init.avahi-daemon.rc
+LOCAL_MODULE := avahi-daemon.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_INITRCD)
 
