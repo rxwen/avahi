@@ -86,7 +86,8 @@ LOCAL_CFLAGS := \
 
 LOCAL_C_INCLUDES := \
         $(LOCAL_PATH) \
-        external/avahi
+        external/avahi \
+        external/expat/lib
 
 include $(BUILD_EXECUTABLE)
 
