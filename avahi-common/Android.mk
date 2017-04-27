@@ -54,6 +54,11 @@ LOCAL_C_INCLUDES := \
     $(LOCAL_PATH) \
     external/avahi
 
+ifneq ($(TARGET_SIMULATOR),true)
+LOCAL_SHARED_LIBRARIES += libstlport libdl
+endif
+
+LOCAL_LDLIBS += -lpthread
 LOCAL_MODULE_TAGS := eng
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/..
 

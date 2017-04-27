@@ -524,7 +524,7 @@ int avahi_service_name_split(const char *p, char *name, size_t name_size, char *
 
         switch (state) {
             case NAME:
-                strlcpy(name, buf, name_size);
+                strncpy(name, buf, name_size);
                 state = TYPE;
                 break;
 
