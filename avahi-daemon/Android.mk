@@ -10,6 +10,7 @@ LOCAL_REQUIRED_MODULES := \
         avahi-daemon.conf \
         avahi-daemon.rc \
 
+LOCAL_MODULE_TAGS := eng
 LOCAL_SRC_FILES := \
         main.c \
         static-services.c \
@@ -97,6 +98,7 @@ LOCAL_MODULE := avahi-daemon.conf
 LOCAL_SRC_FILES := avahi-daemon.conf
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_TARGET := $(TARGET_OUT_ETC)
+LOCAL_MODULE_TAGS := eng
 include $(BUILD_PREBUILT)
 
 # avahi-daemon.rc generation
@@ -106,6 +108,7 @@ LOCAL_MODULE := avahi-daemon.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_INITRCD)
 
+LOCAL_MODULE_TAGS := eng
 include $(BUILD_SYSTEM)/base_rules.mk
 
 .PHONY: $(LOCAL_BUILT_MODULE)

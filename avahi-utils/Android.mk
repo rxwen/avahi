@@ -3,6 +3,7 @@ include $(CLEAR_VARS)
 
 LOCAL_MODULE:=avahi-browse
 
+LOCAL_MODULE_TAGS := eng
 LOCAL_SRC_FILES := \
     avahi-browse.c \
     sigint.c
